@@ -4,6 +4,7 @@ import { Metadata } from 'next'
 import AnimateOnScroll, { FadeInUp, FadeInLeft, FadeInRight, StaggerContainer, StaggerItem } from '../components/AnimateOnScroll'
 import AnimatedButton, { PrimaryButton, SecondaryButton } from '../components/AnimatedButton'
 import Hero3DFallback from '../components/Hero3DFallback'
+import ManufacturingProcess from '../components/ManufacturingProcessOptimized'
 
 export const metadata: Metadata = {
   title: 'Armoureds - Innovative Cybersecurity Solutions | Advanced Digital Protection',
@@ -38,6 +39,9 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Advanced 3D Hero Section with GSAP (CSS-based for stability) */}
       <Hero3DFallback />
+
+      {/* Manufacturing Process Section */}
+      <ManufacturingProcess />
 
       {/* Featured Product Section */}
       <section className="py-16 bg-gradient-to-r from-blue-50 to-indigo-50">

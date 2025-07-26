@@ -1,3 +1,5 @@
+import OurMissionSection from '../../components/OurMissionSection'
+
 export default function About() {
   const timelineEvents = [
     { year: "2013", title: "Founded", description: "Armoureds was established with a vision to democratize cybersecurity." },
@@ -47,6 +49,9 @@ export default function About() {
           <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
         </div>
       </section>
+
+      {/* Our Mission Section with Animation */}
+      <OurMissionSection />
 
       {/* Company Overview */}
       <section className="py-20 bg-white">

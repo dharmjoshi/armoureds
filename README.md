@@ -1,44 +1,133 @@
 # 🛡️ Armoureds - Advanced Cybersecurity Solutions
 
-A cutting-edge Next.js website featuring advanced 3D animations, GSAP scroll-triggered effects, and modern cybersecurity product showcases with responsive navigation.
+A cutting-edge Next.js website featuring advanced 3D animations, GSAP scroll-triggered effects, horizontal scrolling sections, and modern cybersecurity product showcases with immersive user experiences.
 
 ## ✨ Features
 
 ### 🎯 **Advanced Hero Section**
-- **3D Animated Models** using React Three Fiber
+- **3D Animated Models** using React Three Fiber with dynamic lighting
 - **GSAP ScrollTrigger** animations for smooth scroll-based interactions
-- **Sequential Text Animations** with letter-by-letter reveals
-- **Magnetic Buttons** with 3D hover effects
-- **Particle Background System** for atmospheric effects
+- **Sequential Text Animations** with letter-by-letter reveals and typewriter effects
+- **Magnetic Buttons** with 3D hover effects and cursor tracking
+- **Particle Background System** with floating elements and atmospheric effects
+- **Cybersecurity-themed 3D Scene** with orbiting security nodes and wireframe animations
+
+### 🏭 **Manufacturing Process Section**
+- **Horizontal Scrolling Experience** with GSAP ScrollTrigger pin animations
+- **5 Interactive Stages**: Raw Materials → Electrode Coating → Cell Assembly → Quality Testing → Final Product
+- **Stage-specific Animations**:
+  - Rolling mechanisms for electrode coating
+  - Robotic arm movements for assembly
+  - Checkmark animations for quality testing
+  - Package stacking for final products
+- **Progress Indicators** and smooth stage transitions
+
+### 📖 **Enhanced About Us Page**
+- **Animated Mission Section** with slide-in effects from left and right
+- **High-tech Factory Imagery** with hover effects and decorative borders
+- **Statistics Highlights** with animated counters
+- **Team Member Profiles** with professional layouts
+- **Company Timeline** showing key milestones
 
 ### 🔒 **Cybersecurity Products**
 - **ArmoGuard Basic** - Essential protection ($9.99/month)
-- **ArmoShield Pro** - Advanced security suite
-- **ArmoMax Enterprise** - Full enterprise solution
+- **ArmoShield Pro** - Advanced security suite with AI detection
+- **ArmoMax Enterprise** - Full enterprise solution with custom pricing
+- **Detailed Product Pages** with feature comparisons and screenshots
 
-### Core Features
-- **Next.js 15** with App Router
-- **TypeScript** for type safety
+### 🎨 **Advanced Animation System**
+- **GSAP ScrollTrigger** for scroll-based animations
+- **Framer Motion** for React component animations
+- **CSS-based fallbacks** for better performance
+- **Intersection Observer** for optimized animation triggers
+- **Lazy loading** for heavy 3D components
+
+## 🚀 Tech Stack
+
+### Core Framework
+- **Next.js 15** with App Router and Turbopack optimization
+- **TypeScript** for type safety and better development experience
 - **Tailwind CSS** for styling with PostCSS and Autoprefixer
+- **React 18** with Suspense and concurrent features
+
+### 3D & Animation Libraries
 - **React Three Fiber** - 3D graphics in React
+- **@react-three/drei** - Utility components for Three.js
+- **Three.js** - Core 3D graphics library
 - **GSAP** - Professional animations and ScrollTrigger
 - **Framer Motion** - React animation library
-- **Three.js** - 3D graphics library
-- **Static Export** configuration for deployment
+
+### Performance & Optimization
+- **Dynamic imports** for code splitting
+- **Image optimization** with Next.js Image component
+- **Turbopack** for faster development builds
+- **Static export** configuration for deployment
 - **ESLint** for code quality
 
-### Navigation System
-- **Fixed responsive navbar** with scroll effects
-- **Mobile hamburger menu** with smooth animations
-- **Accessibility features** with ARIA labels and keyboard navigation
-- **Smooth hover transitions** and color changes
-- **Brand logo** linking to home page
+## 🗂️ Project Structure
 
-## Getting Started
+```
+src/
+├── components/
+│   ├── Hero3D.tsx                    # 3D Hero section with GSAP
+│   ├── Hero3DFallback.tsx           # CSS-based hero fallback
+│   ├── HeroScene.tsx                # React Three Fiber 3D scene
+│   ├── ManufacturingProcess.tsx     # Horizontal scrolling section
+│   ├── ManufacturingProcessOptimized.tsx # Performance-optimized version
+│   ├── OurMissionSection.tsx        # Animated mission section
+│   ├── AnimatedText.tsx             # Text animation component
+│   ├── AnimatedButton.tsx           # Interactive button component
+│   ├── MagneticButton.tsx           # Magnetic hover effect button
+│   ├── ParticleBackground.tsx       # Floating particle system
+│   ├── ParallaxContainer.tsx        # Parallax scroll effects
+│   ├── AnimateOnScroll.js           # Scroll animation utilities
+│   ├── Navbar.js                    # Responsive navigation
+│   └── Layout.js                    # Layout wrapper component
+├── app/
+│   ├── layout.tsx                   # Root layout with metadata
+│   ├── page.tsx                     # Home page with hero and features
+│   ├── globals.css                  # Global styles and animations
+│   ├── about/
+│   │   └── page.tsx                 # About page with mission section
+│   ├── products/
+│   │   ├── page.tsx                 # Products overview
+│   │   ├── armoguard-basic/
+│   │   │   └── page.tsx             # ArmoGuard Basic details
+│   │   ├── armoshield-pro/
+│   │   │   └── page.tsx             # ArmoShield Pro details
+│   │   └── armomax-enterprise/
+│   │       └── page.tsx             # ArmoMax Enterprise details
+│   └── contact/
+│       └── page.tsx                 # Contact page with forms
+└── public/
+    └── images/                      # Organized image assets
+        ├── hero/                    # Hero section images
+        ├── products/                # Product screenshots
+        │   ├── armoguard-basic/
+        │   ├── armoshield-pro/
+        │   └── armomax-enterprise/
+        ├── features/                # Feature illustrations
+        ├── team/                    # Team member photos
+        ├── company/                 # Company images
+        ├── icons/                   # SVG icons
+        ├── logos/                   # Branding assets
+        └── backgrounds/             # Background textures
+```
 
-First, install the dependencies:
+## 🎮 Getting Started
+
+### Prerequisites
+- Node.js 18+ 
+- npm, yarn, or pnpm
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/dharmjoshi/armoureds.git
+cd armoureds-next
+
+# Install dependencies
 npm install
 # or
 yarn install
@@ -46,127 +135,165 @@ yarn install
 pnpm install
 ```
 
-Then, run the development server:
+### Development
 
 ```bash
+# Standard development server
 npm run dev
-# or with Turbopack for faster builds
-npm run dev:fast
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# With Turbopack for faster builds (recommended)
+npm run dev --turbo
 
-## Navigation Features
-
-### Desktop Navigation
-- Fixed navbar with white background and shadow
-- Brand name "Armoureds" on the left
-- Four navigation links: Home, About, Products, Contact
-- Smooth hover effects with color transitions
-- Background becomes transparent with backdrop blur on scroll
-
-### Mobile Navigation
-- Hamburger menu icon with 3-line to X animation
-- Slide-down mobile menu with staggered item animations
-- Touch-friendly interface
-- Auto-close when selecting navigation items
-
-### Accessibility
-- ARIA labels for screen readers
-- Keyboard navigation support
-- Focus management
-- Semantic HTML structure
-
-## Building for Production
-
-To build and export the project as static files:
-
-```bash
+# Build for production
 npm run build
+
+# Run production build locally
+npm start
 ```
 
-This will generate static files in the `out/` directory ready for deployment.
+Open [http://localhost:3000](http://localhost:3000) to see the result.
 
-## Project Structure
+## 🎯 Key Features Showcase
+
+### 1. **3D Hero Section**
+Navigate to the homepage to experience:
+- Orbiting cybersecurity nodes
+- Dynamic lighting effects
+- Scroll-triggered 3D model rotation
+- Sequential text animations
+
+### 2. **Manufacturing Process**
+Scroll down on the homepage to see:
+- Horizontal scrolling through 5 manufacturing stages
+- Stage-specific animations (rollers, robotic arms, etc.)
+- Progress indicators and smooth transitions
+
+### 3. **Mission Section**
+Visit `/about` to experience:
+- Slide-in animations from left and right
+- Interactive hover effects on images
+- Animated statistics counters
+
+## 🖼️ Image Organization
+
+Images are organized in `/public/images/` with the following structure:
 
 ```
-src/
-├── components/
-│   ├── Navbar.js          # Main navigation component
-│   └── Layout.js          # Layout wrapper component
-├── app/
-│   ├── layout.tsx         # Root layout with Layout component
-│   ├── page.tsx           # Home page
-│   ├── about/
-│   │   └── page.tsx       # About page
-│   ├── products/
-│   │   └── page.tsx       # Products page
-│   └── contact/
-│       └── page.tsx       # Contact page
-└── styles/
-    └── globals.css        # Global styles with Tailwind imports
+images/
+├── hero/                    # Hero section backgrounds
+├── products/                # Product screenshots
+├── features/                # Feature illustrations  
+├── team/                    # Team member photos
+├── company/                 # Company/about images
+├── icons/                   # SVG icons
+├── logos/                   # Branding assets
+└── backgrounds/             # Background textures
 ```
 
-## Key Tailwind Classes Used
+### Usage Example:
+```tsx
+import Image from 'next/image'
 
-### Animation & Transitions
-- `transition-all duration-300 ease-in-out` - Smooth transitions
-- `transform translate-x-0 opacity-100` - Mobile menu animations
-- `hover:bg-blue-50` - Hover state backgrounds
-- `backdrop-blur-sm` - Glass morphism effect on scroll
-
-### Layout & Positioning
-- `fixed top-0 left-0 right-0 z-50` - Fixed navbar positioning
-- `max-w-7xl mx-auto` - Centered container with max width
-- `pt-16` - Top padding to account for fixed navbar height
-
-### Responsive Design
-- `hidden md:block` - Hide on mobile, show on desktop
-- `md:hidden` - Show on mobile, hide on desktop
-- `sm:px-6 lg:px-8` - Responsive padding
-
-## Customization
-
-### Adding New Navigation Items
-Edit the `navLinks` array in `src/components/Navbar.js`:
-
-```javascript
-const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/products', label: 'Products' },
-  { href: '/contact', label: 'Contact' },
-  { href: '/new-page', label: 'New Page' } // Add new items here
-]
+<Image
+  src="/images/products/armoguard-basic/dashboard.jpg"
+  alt="ArmoGuard Basic dashboard"
+  width={800}
+  height={600}
+  priority={true} // For above-the-fold images
+/>
 ```
 
-### Modifying Colors and Animations
-Update the Tailwind classes in the Navbar component:
-- Change `text-blue-600` to your preferred color
-- Adjust `duration-300` for different animation speeds
-- Modify `hover:bg-blue-50` for different hover effects
-├── app/
-│   ├── globals.css      # Global styles with Tailwind imports
-│   ├── layout.tsx       # Root layout component
-│   └── page.tsx         # Home page component
+## ⚡ Performance Optimizations
+
+### Build Optimizations
+- **Turbopack** for faster development builds
+- **Dynamic imports** for code splitting
+- **Image optimization** with WebP conversion
+- **Bundle analysis** and dead code elimination
+
+### Animation Optimizations  
+- **GSAP lazy loading** to reduce initial bundle size
+- **CSS animation fallbacks** for better performance
+- **Intersection Observer** for efficient scroll triggers
+- **Hardware acceleration** with transform3d
+
+### Development Speed
+- **Optimized webpack config** for faster rebuilds
+- **Reduced file watching** overhead
+- **Efficient hot reloading** with Next.js Fast Refresh
+
+## 🎨 Customization Guide
+
+### Adding New Animations
+1. Create component in `/src/components/`
+2. Use GSAP ScrollTrigger pattern:
+```tsx
+useEffect(() => {
+  const { gsap } = await import('gsap');
+  const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+  
+  gsap.registerPlugin(ScrollTrigger);
+  // Your animations here
+}, []);
 ```
 
-## Configuration
+### Adding New Images
+1. Place images in appropriate `/public/images/` subfolder
+2. Use Next.js Image component for optimization
+3. Include descriptive alt text for accessibility
+
+### Modifying 3D Scenes
+1. Edit `/src/components/HeroScene.tsx`
+2. Adjust camera positions, lighting, and materials
+3. Test performance across devices
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+```bash
+# Connect to Vercel
+vercel
+
+# Deploy
+vercel --prod
+```
 
 ### Static Export
-The project is configured for static export in `next.config.js`:
-- `output: 'export'` enables static export
-- `trailingSlash: true` for better static hosting compatibility
-- `images: { unoptimized: true }` for static image handling
+```bash
+# Build static files
+npm run build
 
-### Tailwind CSS
-Tailwind is configured to scan all components in the `src/` directory:
-- Content paths include `src/pages/**/*`, `src/components/**/*`, and `src/app/**/*`
-- PostCSS is configured with Tailwind and Autoprefixer
-- Global styles import Tailwind's base, components, and utilities
+# Files generated in `out/` directory
+# Deploy to any static hosting service
+```
 
-## Learn More
+## 📱 Browser Support
 
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
+- Chrome 90+
+- Firefox 88+
+- Safari 14+
+- Edge 90+
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create feature branch: `git checkout -b feature/amazing-feature`
+3. Commit changes: `git commit -m 'Add amazing feature'`
+4. Push to branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🔗 Links
+
+- **Live Demo**: [https://armoureds.vercel.app](https://armoureds.vercel.app)
+- **Repository**: [https://github.com/dharmjoshi/armoureds](https://github.com/dharmjoshi/armoureds)
+- **Documentation**: [Next.js Docs](https://nextjs.org/docs)
+- **GSAP Docs**: [GSAP Documentation](https://greensock.com/docs/)
+- **Three.js Docs**: [Three.js Documentation](https://threejs.org/docs/)
+
+---
+
+**Built with ❤️ by the Armoureds team**
