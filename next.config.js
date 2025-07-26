@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  // Remove output: 'export' for Vercel deployment
   trailingSlash: true,
   images: {
-    unoptimized: true
+    domains: ['localhost'],
+    formats: ['image/webp', 'image/avif'],
   },
   experimental: {
     turbo: {
