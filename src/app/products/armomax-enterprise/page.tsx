@@ -95,7 +95,7 @@ export default function ArmoMaxEnterprise() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-6">Ready for Enterprise-Level Security?</h2>
           <p className="text-xl text-purple-100 mb-8">
-            Let's discuss how ArmoMax Enterprise can protect your organization.
+            Let&apos;s discuss how ArmoMax Enterprise can protect your organization.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-white text-purple-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition-colors duration-200">

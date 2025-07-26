@@ -42,7 +42,7 @@ export default function About() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">About Armoureds</h1>
           <p className="text-xl text-gray-600 mb-8">
-            We're on a mission to make cybersecurity accessible, effective, and user-friendly for everyone.
+            We&apos;re on a mission to make cybersecurity accessible, effective, and user-friendly for everyone.
           </p>
           <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
         </div>
@@ -181,7 +181,7 @@ export default function About() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-6">Want to Join Our Mission?</h2>
           <p className="text-xl text-blue-100 mb-8">
-            We're always looking for passionate individuals who share our vision of accessible cybersecurity.
+            We&apos;re always looking for passionate individuals who share our vision of accessible cybersecurity.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-white text-blue-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition-colors duration-200">

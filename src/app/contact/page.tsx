@@ -81,7 +81,7 @@ export default function Contact() {
             Get in Touch
           </h1>
           <p className="text-xl text-gray-600 mb-8">
-            Have questions about our security solutions? We're here to help you find the perfect protection for your needs.
+            Have questions about our security solutions? We&apos;re here to help you find the perfect protection for your needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors duration-200">
@@ -199,7 +199,7 @@ export default function Contact() {
                 </button>
                 
                 <p className="text-sm text-gray-500 text-center">
-                  We'll get back to you within 24 hours.
+                  We&apos;ll get back to you within 24 hours.
                 </p>
               </form>
             </div>
@@ -250,7 +250,7 @@ export default function Contact() {
             <h2 className="text-2xl font-bold text-gray-900">Security Emergency?</h2>
           </div>
           <p className="text-lg text-gray-600 mb-6">
-            If you're experiencing an active security incident, contact our emergency response team immediately.
+            If you&apos;re experiencing an active security incident, contact our emergency response team immediately.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg transition-colors duration-200">

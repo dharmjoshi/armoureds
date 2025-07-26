@@ -223,7 +223,7 @@ export default function Home() {
           
           <FadeInUp delay={0.2}>
             <p className="text-xl text-blue-100 mb-8">
-              Don't wait for a security breach. Take action today with Armoureds' comprehensive protection suite.
+              Don&apos;t wait for a security breach. Take action today with Armoureds&apos; comprehensive protection suite.
             </p>
           </FadeInUp>
           
