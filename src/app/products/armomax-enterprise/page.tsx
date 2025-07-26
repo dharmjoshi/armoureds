@@ -58,7 +58,7 @@ export default function ArmoMaxEnterprise() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="text-4xl font-bold text-gray-900 mb-2">Custom Pricing</div>
-            <div className="text-lg text-gray-600">Tailored to your organization's needs</div>
+            <div className="text-lg text-gray-600">Tailored to your organization&apos;s needs</div>
           </div>
         </div>
       </section>

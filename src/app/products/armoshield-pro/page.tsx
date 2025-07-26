@@ -178,7 +178,7 @@ export default function ArmoShieldPro() {
             
             <div className="space-y-8">
               <div className="bg-blue-50 rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">What's Included</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">What&apos;s Included</h3>
                 <ul className="space-y-3">
                   <li className="flex items-center text-gray-700">
                     <svg className="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">

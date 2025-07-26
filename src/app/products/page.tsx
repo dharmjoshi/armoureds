@@ -62,7 +62,7 @@ export default function Products() {
       id: "armohome-guard",
       name: "ArmoHome Guard",
       tagline: "Smart home security",
-      description: "Protect your smart home devices, IoT network, and family's digital activities with intelligent monitoring.",
+      description: "Protect your smart home devices, IoT network, and family&apos;s digital activities with intelligent monitoring.",
       price: "$29/month",
       features: ["IoT device monitoring", "Network security", "Parental controls", "Privacy protection"],
       category: "Home",

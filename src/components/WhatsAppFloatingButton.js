@@ -7,7 +7,7 @@ const WhatsAppFloatingButton = () => {
   
   // Replace with your actual WhatsApp number (in international format without + or spaces)
   const whatsappNumber = "1234567890"
-  const defaultMessage = "Hi! I'm interested in Armoureds security solutions. Can you help me?"
+  const defaultMessage = "Hi! I&apos;m interested in Armoureds security solutions. Can you help me?"
   
   const handleWhatsAppClick = () => {
     const encodedMessage = encodeURIComponent(defaultMessage)

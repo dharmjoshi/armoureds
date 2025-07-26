@@ -14,9 +14,9 @@ if (typeof window !== 'undefined') {
 
 // Animated 3D Model Component - Enhanced Cybersecurity Theme
 function AnimatedModel() {
-  const modelRef = useRef<THREE.Group>(null);
-  const coreRef = useRef<THREE.Mesh>(null);
-  const orbitingRefs = useRef<(THREE.Mesh | null)[]>([]);
+  const modelRef = useRef(null);
+  const coreRef = useRef(null);
+  const orbitingRefs = useRef([]);
   
   useEffect(() => {
     if (!modelRef.current || typeof window === 'undefined') return;
