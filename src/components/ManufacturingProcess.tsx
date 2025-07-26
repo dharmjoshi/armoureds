@@ -13,166 +13,159 @@ const ManufacturingProcess = () => {
     }
   };
 
-'use client';
-
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-// Register GSAP plugins
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
-const ManufacturingProcess = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const stagesRef = useRef<HTMLDivElement[]>([]);
-
-  const addToRefs = (el: HTMLDivElement | null) => {
-    if (el && !stagesRef.current.includes(el)) {
-      stagesRef.current.push(el);
-    }
-  };
-
   useEffect(() => {
+    // Only load GSAP when component mounts to improve initial load time
     if (typeof window === 'undefined' || !sectionRef.current || !containerRef.current) return;
 
-    const section = sectionRef.current;
-    const container = containerRef.current;
-    const stages = stagesRef.current;
+    const loadGSAP = async () => {
+      const { gsap } = await import('gsap');
+      const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+      
+      gsap.registerPlugin(ScrollTrigger);
 
-    // Calculate total scroll distance
-    const totalWidth = container.scrollWidth - window.innerWidth;
-      x: -totalWidth,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: section,
-        pin: true,
-        scrub: 1,
-        end: () => `+=${totalWidth}`,
-        anticipatePin: 1,
-      },
-    });
+      const section = sectionRef.current;
+      const container = containerRef.current;
+      const stages = stagesRef.current;
 
-    // Animate each stage as it comes into view
-    stages.forEach((stage, index) => {
-      const icon = stage.querySelector('.stage-icon');
-      const text = stage.querySelector('.stage-text');
-      const animation = stage.querySelector('.stage-animation');
+      if (!section || !container) return;
 
-      gsap.fromTo(
-        [icon, text, animation],
-        {
-          opacity: 0,
-          y: 50,
-          scale: 0.8,
+      // Calculate total scroll distance
+      const totalWidth = container.scrollWidth - window.innerWidth;
+
+      // Create horizontal scrolling animation
+      const horizontalScroll = gsap.to(container, {
+        x: -totalWidth,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          pin: true,
+          scrub: 1,
+          end: () => `+=${totalWidth}`,
+          anticipatePin: 1,
         },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.8,
-          stagger: 0.2,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: stage,
-            containerAnimation: horizontalScroll,
-            start: 'left 80%',
-            end: 'left 20%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
+      });
 
-      // Add specific animations for each stage
-      if (index === 1) { // Electrode Coating - rolling animation
-        const rollers = stage.querySelectorAll('.roller');
-        gsap.to(rollers, {
-          rotation: 360,
-          duration: 2,
-          repeat: -1,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: stage,
-            containerAnimation: horizontalScroll,
-            start: 'left 60%',
-            end: 'left 40%',
-            toggleActions: 'play pause resume pause',
-          },
-        });
-      }
+      // Animate each stage as it comes into view
+      stages.forEach((stage, index) => {
+        const icon = stage.querySelector('.stage-icon');
+        const text = stage.querySelector('.stage-text');
+        const animation = stage.querySelector('.stage-animation');
 
-      if (index === 2) { // Cell Assembly - robotic arm
-        const arm = stage.querySelector('.robotic-arm');
-        gsap.to(arm, {
-          rotation: 15,
-          duration: 1.5,
-          repeat: -1,
-          yoyo: true,
-          ease: 'power2.inOut',
-          scrollTrigger: {
-            trigger: stage,
-            containerAnimation: horizontalScroll,
-            start: 'left 60%',
-            end: 'left 40%',
-            toggleActions: 'play pause resume pause',
-          },
-        });
-      }
-
-      if (index === 3) { // Quality Testing - checkmark animation
-        const checkmark = stage.querySelector('.checkmark');
-        gsap.fromTo(checkmark, 
-          { 
-            scale: 0,
-            rotation: -180,
-          },
+        gsap.fromTo(
+          [icon, text, animation],
           {
-            scale: 1,
-            rotation: 0,
-            duration: 0.8,
-            ease: 'back.out(1.7)',
-            scrollTrigger: {
-              trigger: stage,
-              containerAnimation: horizontalScroll,
-              start: 'left 60%',
-              end: 'left 40%',
-              toggleActions: 'play none none reverse',
-            },
-          }
-        );
-      }
-
-      if (index === 4) { // Final Product - stacking animation
-        const packages = stage.querySelectorAll('.package');
-        gsap.fromTo(packages,
-          {
-            y: 50,
             opacity: 0,
+            y: 50,
+            scale: 0.8,
           },
           {
-            y: 0,
             opacity: 1,
-            duration: 0.6,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
             stagger: 0.2,
-            ease: 'bounce.out',
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: stage,
+              containerAnimation: horizontalScroll,
+              start: 'left 80%',
+              end: 'left 20%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+
+        // Add specific animations for each stage
+        if (index === 1) { // Electrode Coating - rolling animation
+          const rollers = stage.querySelectorAll('.roller');
+          gsap.to(rollers, {
+            rotation: 360,
+            duration: 2,
+            repeat: -1,
+            ease: 'none',
             scrollTrigger: {
               trigger: stage,
               containerAnimation: horizontalScroll,
               start: 'left 60%',
               end: 'left 40%',
-              toggleActions: 'play none none reverse',
+              toggleActions: 'play pause resume pause',
             },
-          }
-        );
-      }
-    });
+          });
+        }
 
-    // Cleanup
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        if (index === 2) { // Cell Assembly - robotic arm
+          const arm = stage.querySelector('.robotic-arm');
+          gsap.to(arm, {
+            rotation: 15,
+            duration: 1.5,
+            repeat: -1,
+            yoyo: true,
+            ease: 'power2.inOut',
+            scrollTrigger: {
+              trigger: stage,
+              containerAnimation: horizontalScroll,
+              start: 'left 60%',
+              end: 'left 40%',
+              toggleActions: 'play pause resume pause',
+            },
+          });
+        }
+
+        if (index === 3) { // Quality Testing - checkmark animation
+          const checkmark = stage.querySelector('.checkmark');
+          gsap.fromTo(checkmark, 
+            { 
+              scale: 0,
+              rotation: -180,
+            },
+            {
+              scale: 1,
+              rotation: 0,
+              duration: 0.8,
+              ease: 'back.out(1.7)',
+              scrollTrigger: {
+                trigger: stage,
+                containerAnimation: horizontalScroll,
+                start: 'left 60%',
+                end: 'left 40%',
+                toggleActions: 'play none none reverse',
+              },
+            }
+          );
+        }
+
+        if (index === 4) { // Final Product - stacking animation
+          const packages = stage.querySelectorAll('.package');
+          gsap.fromTo(packages,
+            {
+              y: 50,
+              opacity: 0,
+            },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.6,
+              stagger: 0.2,
+              ease: 'bounce.out',
+              scrollTrigger: {
+                trigger: stage,
+                containerAnimation: horizontalScroll,
+                start: 'left 60%',
+                end: 'left 40%',
+                toggleActions: 'play none none reverse',
+              },
+            }
+          );
+        }
+      });
+
+      // Cleanup function
+      return () => {
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      };
     };
+
+    loadGSAP();
   }, []);
 
   const stages = [
@@ -182,7 +175,6 @@ const ManufacturingProcess = () => {
       icon: (
         <div className="stage-animation relative">
           <div className="w-24 h-24 bg-gradient-to-br from-amber-400 to-orange-500 rounded-lg flex items-center justify-center shadow-lg">
-            {/* Mineral crystals */}
             <div className="relative">
               <div className="w-8 h-8 bg-yellow-300 transform rotate-45 absolute -top-2 -left-2 opacity-80"></div>
               <div className="w-6 h-6 bg-orange-400 transform rotate-12 absolute top-1 right-1 opacity-90"></div>
@@ -198,7 +190,6 @@ const ManufacturingProcess = () => {
       icon: (
         <div className="stage-animation relative">
           <div className="w-24 h-24 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-lg flex items-center justify-center shadow-lg">
-            {/* Rolling mechanism */}
             <div className="relative">
               <div className="roller w-6 h-16 bg-gray-300 rounded-full shadow-md absolute -left-4"></div>
               <div className="roller w-6 h-16 bg-gray-400 rounded-full shadow-md absolute right-2"></div>
@@ -214,7 +205,6 @@ const ManufacturingProcess = () => {
       icon: (
         <div className="stage-animation relative">
           <div className="w-24 h-24 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-lg flex items-center justify-center shadow-lg">
-            {/* Robotic arm */}
             <div className="relative">
               <div className="robotic-arm w-12 h-3 bg-gray-600 rounded-full transform-gpu origin-left"></div>
               <div className="w-4 h-4 bg-red-400 rounded-full absolute -right-1 -top-1"></div>
@@ -230,7 +220,6 @@ const ManufacturingProcess = () => {
       icon: (
         <div className="stage-animation relative">
           <div className="w-24 h-24 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg flex items-center justify-center shadow-lg">
-            {/* Battery with checkmark */}
             <div className="relative">
               <div className="w-12 h-16 bg-gray-800 rounded-sm"></div>
               <div className="w-8 h-2 bg-gray-600 absolute -top-1 left-2 rounded-t"></div>
@@ -250,7 +239,6 @@ const ManufacturingProcess = () => {
       icon: (
         <div className="stage-animation relative">
           <div className="w-24 h-24 bg-gradient-to-br from-teal-400 to-blue-500 rounded-lg flex items-center justify-center shadow-lg">
-            {/* Stacked packages */}
             <div className="relative">
               <div className="package w-8 h-6 bg-orange-400 rounded absolute bottom-0 left-2"></div>
               <div className="package w-8 h-6 bg-orange-500 rounded absolute bottom-4 left-2"></div>
