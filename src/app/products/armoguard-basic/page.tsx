@@ -129,17 +129,17 @@ export default function ArmoGuardBasic() {
   return (
     <div className="min-h-screen bg-white">
       {/* Breadcrumb */}
-      <div className="bg-gray-50 py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="bg-gray-50 py-3 sm:py-4">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <nav className="flex" aria-label="Breadcrumb">
-            <ol className="flex items-center space-x-4">
+            <ol className="flex items-center space-x-2 sm:space-x-4 text-sm sm:text-base">
               <li>
                 <Link href="/" className="text-gray-500 hover:text-gray-700">
                   Home
                 </Link>
               </li>
               <li>
-                <svg className="flex-shrink-0 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="flex-shrink-0 h-4 w-4 sm:h-5 sm:w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                 </svg>
               </li>
@@ -149,7 +149,7 @@ export default function ArmoGuardBasic() {
                 </Link>
               </li>
               <li>
-                <svg className="flex-shrink-0 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="flex-shrink-0 h-4 w-4 sm:h-5 sm:w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                 </svg>
               </li>
@@ -162,61 +162,61 @@ export default function ArmoGuardBasic() {
       </div>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 to-indigo-100 py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <section className="bg-gradient-to-br from-blue-50 to-indigo-100 py-12 sm:py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <FadeInLeft>
               <div>
-                <div className="flex items-center space-x-2 mb-4">
-                  <span className="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">
+                <div className="flex items-center space-x-2 mb-3 sm:mb-4 flex-wrap gap-2">
+                  <span className="bg-blue-100 text-blue-800 text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-full">
                     Most Popular
                   </span>
-                  <span className="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">
+                  <span className="bg-green-100 text-green-800 text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-full">
                     Best Value
                   </span>
                 </div>
                 
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
                   ArmoGuard Basic
                 </h1>
                 
-                <p className="text-xl text-gray-600 mb-6">
+                <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-4 sm:mb-6">
                   Essential cybersecurity protection designed for individuals and small businesses. 
                   Get started with comprehensive digital security at an affordable price.
                 </p>
                 
-                <div className="flex items-baseline space-x-2 mb-8">
-                  <span className="text-4xl font-bold text-blue-600">$9.99</span>
-                  <span className="text-xl text-gray-500">/month</span>
+                <div className="flex items-baseline space-x-2 mb-6 sm:mb-8">
+                  <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-600">$9.99</span>
+                  <span className="text-lg sm:text-xl text-gray-500">/month</span>
                   <span className="text-sm text-gray-400 line-through ml-2">$19.99</span>
                 </div>
                 
-                <div className="space-y-3 mb-8">
-                  <div className="flex items-center space-x-3">
-                    <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                <div className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
+                  <div className="flex items-center space-x-2 sm:space-x-3">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-gray-700">30-day free trial</span>
+                    <span className="text-sm sm:text-base text-gray-700">30-day free trial</span>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                  <div className="flex items-center space-x-2 sm:space-x-3">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-gray-700">Cancel anytime</span>
+                    <span className="text-sm sm:text-base text-gray-700">Cancel anytime</span>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                  <div className="flex items-center space-x-2 sm:space-x-3">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-gray-700">Money-back guarantee</span>
+                    <span className="text-sm sm:text-base text-gray-700">Money-back guarantee</span>
                   </div>
                 </div>
                 
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <PrimaryButton size="lg" className="flex-1 sm:flex-initial">
+                <div className="flex flex-col gap-3 sm:gap-4">
+                  <PrimaryButton size="lg" className="w-full">
                     Start Free Trial
                   </PrimaryButton>
-                  <SecondaryButton size="lg">
+                  <SecondaryButton size="lg" className="w-full sm:w-auto">
                     Schedule Demo
                   </SecondaryButton>
                 </div>
@@ -224,30 +224,30 @@ export default function ArmoGuardBasic() {
             </FadeInLeft>
             
             <FadeInRight>
-              <div className="relative">
+              <div className="relative mt-8 lg:mt-0">
                 <Image
                   src="/images/products/armoguard-basic-hero.jpg"
                   alt="ArmoGuard Basic product interface showcasing the main security dashboard with real-time threat monitoring, protection status, and user-friendly controls for essential cybersecurity management"
                   width={600}
                   height={400}
                   priority
-                  className="rounded-lg shadow-2xl"
+                  className="rounded-lg shadow-2xl w-full h-auto"
                   style={{
                     objectFit: 'cover',
                   }}
                 />
                 
                 {/* Floating Stats */}
-                <div className="absolute -top-4 -right-4 bg-white rounded-lg shadow-lg p-4 border">
+                <div className="absolute -top-2 sm:-top-4 -right-2 sm:-right-4 bg-white rounded-lg shadow-lg p-2 sm:p-4 border">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-green-600">99.8%</div>
-                    <div className="text-sm text-gray-600">Threat Detection</div>
+                    <div className="text-lg sm:text-2xl font-bold text-green-600">99.8%</div>
+                    <div className="text-xs sm:text-sm text-gray-600">Threat Detection</div>
                   </div>
                 </div>
                 
-                <div className="absolute -bottom-4 -left-4 bg-white rounded-lg shadow-lg p-4 border">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                <div className="absolute -bottom-2 sm:-bottom-4 -left-2 sm:-left-4 bg-white rounded-lg shadow-lg p-2 sm:p-4 border">
+                  <div className="flex items-center space-x-1 sm:space-x-2">
+                    <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full animate-pulse"></div>
                     <span className="text-sm font-medium text-gray-700">Active Protection</span>
                   </div>
                 </div>
