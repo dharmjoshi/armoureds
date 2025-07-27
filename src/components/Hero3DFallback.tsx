@@ -201,12 +201,23 @@ export default function Hero3DFallback() {
             </div>
           </div>
 
-          {/* Scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center animate-bounce">
-            <div className="flex flex-col items-center space-y-2 text-blue-200">
-              <span className="text-sm font-medium">Scroll to explore</span>
+          {/* Scroll indicator - clickable and properly centered */}
+          <button 
+            onClick={() => {
+              const nextSection = document.querySelector('#manufacturing-process');
+              if (nextSection) {
+                nextSection.scrollIntoView({ behavior: 'smooth' });
+              } else {
+                window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+              }
+            }}
+            className="absolute bottom-8 left-0 right-0 mx-auto w-fit text-center animate-bounce cursor-pointer hover:scale-110 transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-lg p-2"
+            aria-label="Scroll to explore content"
+          >
+            <div className="flex flex-col items-center justify-center space-y-2 text-blue-200 hover:text-white transition-colors duration-200">
+              <span className="text-sm font-medium text-center">Scroll to explore</span>
               <svg 
-                className="w-6 h-6" 
+                className="w-6 h-6 mx-auto" 
                 fill="none" 
                 stroke="currentColor" 
                 viewBox="0 0 24 24"
@@ -219,7 +230,7 @@ export default function Hero3DFallback() {
                 />
               </svg>
             </div>
-          </div>
+          </button>
         </div>
       </div>
 

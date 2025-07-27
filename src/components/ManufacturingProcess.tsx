@@ -29,6 +29,38 @@ const ManufacturingProcess = () => {
 
       if (!section || !container) return;
 
+      // Check if mobile device
+      const isMobile = window.innerWidth < 768;
+      
+      if (isMobile) {
+        // On mobile, use vertical scroll instead of horizontal
+        stages.forEach((stage, index) => {
+          gsap.fromTo(
+            stage,
+            {
+              opacity: 0,
+              y: 50,
+              scale: 0.9,
+            },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.8,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: stage,
+                start: 'top 85%',
+                end: 'bottom 15%',
+                toggleActions: 'play none none reverse',
+              },
+            }
+          );
+        });
+        return;
+      }
+
+      // Desktop horizontal scroll behavior
       // Calculate total scroll distance
       const totalWidth = container.scrollWidth - window.innerWidth;
 
@@ -252,27 +284,72 @@ const ManufacturingProcess = () => {
 
   return (
     <section 
+      id="manufacturing-process"
       ref={sectionRef}
       className="relative bg-gradient-to-br from-slate-50 to-blue-50 overflow-hidden"
       style={{ minHeight: '100vh' }}
     >
       {/* Section Header */}
       <div className="absolute top-0 left-0 right-0 z-10 bg-white/80 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-12 text-center">
+          <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 md:mb-4">
             Our Manufacturing Process
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-sm sm:text-base md:text-xl text-gray-600 max-w-3xl mx-auto px-2">
             From raw materials to final delivery, experience the precision and innovation 
             behind every Armoured battery through our state-of-the-art manufacturing pipeline.
           </p>
         </div>
       </div>
 
-      {/* Horizontal Scrolling Container */}
+      {/* Mobile Vertical Layout */}
+      <div className="md:hidden pt-24 pb-16 px-4">
+        <div className="space-y-8">
+          {stages.map((stage, index) => (
+            <div
+              key={index}
+              ref={addToRefs}
+              className="bg-white rounded-xl shadow-lg p-4 text-center"
+            >
+              {/* Stage Icon */}
+              <div className="stage-icon mb-4 flex justify-center">
+                {stage.icon}
+              </div>
+
+              {/* Stage Content */}
+              <div className="stage-text">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">
+                  {stage.title}
+                </h3>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  {stage.description}
+                </p>
+              </div>
+
+              {/* Progress Indicator */}
+              <div className="mt-4 flex justify-center items-center space-x-2">
+                {stages.map((_, i) => (
+                  <div
+                    key={i}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      i === index 
+                        ? 'bg-blue-500 scale-125' 
+                        : i < index 
+                          ? 'bg-blue-300' 
+                          : 'bg-gray-300'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop Horizontal Scrolling Container */}
       <div 
         ref={containerRef}
-        className="flex items-center h-screen pt-40"
+        className="hidden md:flex items-center h-screen pt-40"
         style={{ width: 'max-content' }}
       >
         {stages.map((stage, index) => (
@@ -324,14 +401,33 @@ const ManufacturingProcess = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
-        <div className="flex items-center space-x-2 text-gray-500">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center hidden md:block">
+        <div className="flex items-center justify-center space-x-2 text-gray-500">
           <span className="text-sm font-medium">Scroll to explore process</span>
           <svg className="w-5 h-5 animate-bounce-horizontal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </div>
       </div>
+
+      {/* Mobile Scroll Indicator - properly centered and clickable */}
+      <button 
+        onClick={() => {
+          const nextSection = document.querySelector('section:nth-of-type(3)');
+          if (nextSection) {
+            nextSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }}
+        className="absolute bottom-4 left-0 right-0 mx-auto w-fit text-center md:hidden cursor-pointer hover:scale-110 transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-lg p-2"
+        aria-label="Scroll to next section"
+      >
+        <div className="flex flex-col items-center justify-center space-y-2 text-gray-500 hover:text-gray-700 transition-colors duration-200">
+          <span className="text-sm font-medium text-center">Scroll down to explore</span>
+          <svg className="w-5 h-5 animate-bounce mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </div>
+      </button>
 
       <style jsx>{`
         @keyframes bounce-horizontal {
