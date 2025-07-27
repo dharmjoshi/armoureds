@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import MagneticButton from './MagneticButton';
@@ -16,9 +16,23 @@ export default function Hero3DFallback() {
   const subtitleRef = useRef<HTMLDivElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
   const scene3DRef = useRef<HTMLDivElement>(null);
+  const scrollButtonRef = useRef<HTMLButtonElement>(null);
+  const [isScrollButtonVisible, setIsScrollButtonVisible] = useState(true);
 
   useEffect(() => {
     if (typeof window === 'undefined' || !heroRef.current) return;
+
+    // Scroll button visibility handler
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const heroHeight = heroRef.current?.offsetHeight || 0;
+      
+      // Hide button when scrolled past 30% of hero section
+      setIsScrollButtonVisible(scrollY < heroHeight * 0.3);
+    };
+
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll);
 
     // Initial animation for text elements
     const tl = gsap.timeline({ delay: 1 });
@@ -94,6 +108,7 @@ export default function Hero3DFallback() {
 
     // Cleanup
     return () => {
+      window.removeEventListener('scroll', handleScroll);
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
@@ -125,9 +140,9 @@ export default function Hero3DFallback() {
         <div className="relative" style={{ transformStyle: 'preserve-3d' }}>
           {/* Central cybersecurity hub */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-64 h-64 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-500/20 backdrop-blur-sm border border-blue-400/30 animate-pulse">
+            <div className="w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-500/20 backdrop-blur-sm border border-blue-400/30 animate-pulse">
               <div className="w-full h-full rounded-full bg-gradient-to-br from-blue-600/30 to-cyan-600/30 flex items-center justify-center">
-                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 opacity-80 animate-spin" style={{ animationDuration: '8s' }}>
+                <div className="w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 opacity-80 animate-spin" style={{ animationDuration: '8s' }}>
                   <div className="w-full h-full rounded-full bg-gradient-to-br from-transparent to-white/20"></div>
                 </div>
               </div>
@@ -138,9 +153,9 @@ export default function Hero3DFallback() {
           {Array.from({ length: 8 }, (_, i) => (
             <div
               key={i}
-              className="absolute w-8 h-8 bg-gradient-to-br from-blue-400 to-cyan-400 rounded opacity-70 animate-spin"
+              className="absolute w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 bg-gradient-to-br from-blue-400 to-cyan-400 rounded opacity-70 animate-spin"
               style={{
-                transform: `rotateY(${i * 45}deg) translateZ(200px)`,
+                transform: `rotateY(${i * 45}deg) translateZ(${100 + i * 10}px)`,
                 animationDuration: `${10 + i}s`,
                 animationDelay: `${i * 0.5}s`,
               }}
@@ -149,43 +164,43 @@ export default function Hero3DFallback() {
 
           {/* Wireframe rings */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-96 h-96 rounded-full border-2 border-blue-400/20 animate-spin" style={{ animationDuration: '20s' }}></div>
+            <div className="w-48 h-48 sm:w-72 sm:h-72 md:w-96 md:h-96 rounded-full border-2 border-blue-400/20 animate-spin" style={{ animationDuration: '20s' }}></div>
           </div>
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-80 h-80 rounded-full border border-cyan-400/30 animate-spin" style={{ animationDuration: '15s', animationDirection: 'reverse' }}></div>
+            <div className="w-40 h-40 sm:w-60 sm:h-60 md:w-80 md:h-80 rounded-full border border-cyan-400/30 animate-spin" style={{ animationDuration: '15s', animationDirection: 'reverse' }}></div>
           </div>
         </div>
       </div>
 
       {/* Text Overlay */}
       <div className="relative z-20 flex items-center justify-center min-h-screen">
-        <div className="text-center px-4 max-w-5xl mx-auto">
+        <div className="text-center px-3 sm:px-4 md:px-6 max-w-5xl mx-auto">
           <div ref={textRef}>
             {/* Main Title */}
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl xl:text-9xl font-bold mb-4 sm:mb-6 leading-tight">
               <div className="bg-gradient-to-r from-white via-blue-100 to-cyan-200 bg-clip-text text-transparent">
                 {splitText('Welcome to')}
               </div>
-              <div className="mt-2 bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 bg-clip-text text-transparent">
+              <div className="mt-1 sm:mt-2 bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 bg-clip-text text-transparent">
                 {splitText('Armoureds')}
               </div>
             </h1>
 
             {/* Subtitle */}
             <div ref={subtitleRef}>
-              <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-blue-100 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed px-2">
                 Experience the future of cybersecurity with cutting-edge 3D visualizations 
                 and AI-powered threat detection
               </p>
             </div>
 
             {/* Call-to-action buttons */}
-            <div ref={buttonsRef} className="flex gap-6 justify-center flex-wrap">
+            <div ref={buttonsRef} className="flex gap-3 sm:gap-4 md:gap-6 justify-center flex-wrap px-2">
               <MagneticButton 
                 href="/products/armoguard-basic"
                 size="lg"
                 variant="primary"
-                className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold shadow-2xl shadow-blue-500/25 px-8 py-4"
+                className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold shadow-2xl shadow-blue-500/25 px-4 py-3 sm:px-6 sm:py-3 md:px-8 md:py-4 text-sm sm:text-base"
               >
                 🚀 Launch Experience
               </MagneticButton>
@@ -194,15 +209,20 @@ export default function Hero3DFallback() {
                 href="/products"
                 size="lg"
                 variant="secondary"
-                className="bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 hover:bg-white/20 px-8 py-4"
+                className="bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 hover:bg-white/20 px-4 py-3 sm:px-6 sm:py-3 md:px-8 md:py-4 text-sm sm:text-base"
               >
                 Explore Products
               </MagneticButton>
             </div>
           </div>
+        </div>
+      </div>
 
-          {/* Scroll indicator - clickable and properly centered */}
+      {/* Scroll indicator - positioned relative to hero section */}
+      {isScrollButtonVisible && (
+        <div className="absolute bottom-6 sm:bottom-8 md:bottom-12 left-0 right-0 z-30 flex justify-center">
           <button 
+            ref={scrollButtonRef}
             onClick={() => {
               const nextSection = document.querySelector('#manufacturing-process');
               if (nextSection) {
@@ -211,13 +231,15 @@ export default function Hero3DFallback() {
                 window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
               }
             }}
-            className="absolute bottom-8 left-0 right-0 mx-auto w-fit text-center animate-bounce cursor-pointer hover:scale-110 transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-lg p-2"
+            className="animate-bounce cursor-pointer hover:scale-110 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-xl p-3 sm:p-4 backdrop-blur-md bg-white/10 border border-white/30 shadow-lg"
             aria-label="Scroll to explore content"
           >
-            <div className="flex flex-col items-center justify-center space-y-2 text-blue-200 hover:text-white transition-colors duration-200">
-              <span className="text-sm font-medium text-center">Scroll to explore</span>
+            <div className="flex flex-col items-center justify-center space-y-2">
+              <span className="text-xs sm:text-sm font-medium text-white text-center">
+                Scroll to explore
+              </span>
               <svg 
-                className="w-6 h-6 mx-auto" 
+                className="w-5 h-5 sm:w-6 sm:h-6 text-white" 
                 fill="none" 
                 stroke="currentColor" 
                 viewBox="0 0 24 24"
@@ -232,7 +254,7 @@ export default function Hero3DFallback() {
             </div>
           </button>
         </div>
-      </div>
+      )}
 
       {/* Gradient overlays for depth */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none z-15" />
